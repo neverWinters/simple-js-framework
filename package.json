@@ -1,6 +1,6 @@
 {
   "name": "simple-js-framework",
-  "version": "1.0.0",
+  "version": "0.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -22,5 +22,9 @@
     "minimist": "^1.2.5",
     "simple-git": "^2.6.0",
     "touch": "^3.1.0"
+  },
+  "bin": {
+    "simplejs": "./index.js"
   }
+  
 }
