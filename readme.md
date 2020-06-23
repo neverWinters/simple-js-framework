@@ -1,6 +1,6 @@
 # Simple Js Framework
 
-Simple Js is a framework designed to make web devlopment more simple and fast. 
+Simple Js is a framework designed to make web development more simple and fast. 
 
 # Installation
 
@@ -17,4 +17,8 @@ To create a Simple Js project just type in the command line:
 ```bash
 simplejs create project-name
 ```
+
+# License
+
+This framework is under the ISC license.
 
