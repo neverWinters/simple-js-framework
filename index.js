@@ -21,9 +21,13 @@ const mainAsyncProc = async() => {
         case 'create':
             if(argv._[1]){
                 project_name = argv._[1];
+                const askInfo = await inquirer.askProjectInfo();
+                project_description = askInfo.description;
+                project_author = askInfo.author;
             }else{
-                const askInfo = await inquirer.askProjectName();
-                project_name = askInfo.name;
+                const askName = await inquirer.askProjectName();
+                project_name = askName.name;
+                const askInfo = await inquirer.askProjectInfo();
                 project_description = askInfo.description;
                 project_author = askInfo.author;
             }
