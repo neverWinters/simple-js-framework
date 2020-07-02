@@ -18,7 +18,7 @@ To create a Simple Js project just type in the command line:
 simplejs create project-name
 ```
 
-To start using the Simple Js environment
+To start using the Simple Js environment:
 
 ```bash
 cd project-name
@@ -26,19 +26,21 @@ npm run begin
 npm run start
 ```
 
-Next open the browser in http://localhost:4200
-The Simple Js live server is powered by [Nodemon](https://www.npmjs.com/package/nodemon)
+Next open the browser in http://localhost:4200 
+
+The Simple Js live server is powered by [Nodemon](https://www.npmjs.com/package/nodemon).
 
 # Creating Components
 
-A component is another instance of javascript within the same project.
+A component is another instance of javascript within the same project. 
+
 Create a new component is very simple, just run the following command from the project root:
 
 ```bash
 simplejs add component component-name
 ```
 
-The component will be available on the route http://localhost:4200/componente-name
+The component will be available on the route http://localhost:4200/component-name
 
 # Environment
 
