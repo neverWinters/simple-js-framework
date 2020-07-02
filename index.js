@@ -17,6 +17,7 @@ const mainAsyncProc = async() => {
     let project_name;
     let project_description;
     let project_author;
+    let component_name;
     switch(argv._[0]) {
         case 'create':
             if(argv._[1]){
@@ -48,10 +49,42 @@ const mainAsyncProc = async() => {
                 }
             }else{
                 console.log(
-                    chalk.red('Error, there is already a project or folder with that name in the current folder')
+                    chalk.red('Error, there is already a project or folder with that name in the current folder.')
                 );
             }
-          break;
+            break;
+        case 'add':
+            if(!argv._[1]){
+                return console.log(
+                    chalk.red(`Error, please specify type of object to add in the project.`)
+                );
+            }
+            if(argv._[1] == 'component'){
+                if(argv._[2]){
+                    component_name = argv._[2];
+                }else{
+                    const askName = await inquirer.askComponentName();
+                    component_name = askName.name;
+                }
+                if(files.directoryExists(`./package.json`) && files.verifyPackageJsonFile()){
+                    try{
+                        files.createComponentFiles(component_name);
+                    }catch(error){
+                        console.log(
+                            chalk.red('Error: ' + error)
+                        );
+                    }
+                }else{
+                    console.log(
+                        chalk.red('Error, the current project or folder does not have a valid package.json file.')
+                    );
+                }
+            }else{
+                console.log(
+                    chalk.red(`Error, there is no ${argv._[1]} option in the current build.`)
+                );
+            }
+            break;
         default:
           console.log(
               chalk.red('Error!')
