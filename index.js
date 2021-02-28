@@ -1,104 +1,64 @@
 #!/usr/bin/env node
-const chalk = require('chalk');
 const clear = require('clear');
-const figlet = require('figlet');
-const files = require('./lib/files');
-const argv = require('minimist')(process.argv.slice(2));
-const inquirer = require('./lib/inquirer');
+const logger = require('./lib/helpers/logger');
+const inquirer = require('./lib/helpers/inquirer');
+const helper = require('./lib/helpers/helper');
+const create = require('./lib/commands/create');
+const notAllowedCharacters = /[ `!@#$%^&*()_+\=\[\]{};':"\\|,.<>\/?~]/;
+const yargs = require('yargs/yargs');
+const { hideBin } = require('yargs/helpers');
+const argv = yargs(hideBin(process.argv)).usage('Usage: simplejs <command> [options]')
+    .command('create', 'Create a simpleJs Project')
+    .example('simplejs create -t <type> -n <name>', 'Create command for SimpleJs project.')
+    .alias('n', 'name')
+    .describe('n', 'Name')
+    .alias('t', 'type')
+    .describe('t', 'Type')
+    .choices('t', ['project', 'component'])
+    .demandOption(['t'])
+    .argv;
 
 clear();
-console.log(
-    chalk.blue(
-        figlet.textSync('Simple-Js', { horizontalLayout: 'full' })
-    )
-);
+logger.createVisualLog('blueBright', 'SimpleJs');
 
-const mainAsyncProc = async() => {
-    let project_name;
-    let project_description;
-    let project_author;
-    let component_name;
-    switch(argv._[0]) {
-        case 'create':
-            if(argv._[1]){
-                project_name = argv._[1];
-                const askInfo = await inquirer.askProjectInfo();
-                project_description = askInfo.description;
-                project_author = askInfo.author;
-            }else{
-                const askName = await inquirer.askProjectName();
-                project_name = askName.name;
-                const askInfo = await inquirer.askProjectInfo();
-                project_description = askInfo.description;
-                project_author = askInfo.author;
-            }
-            if(!files.directoryExists(`./${project_name}`)){
-                files.createDirectory(`./${project_name}`);
-                if(!files.directoryExists(`./${project_name}`)){
-                    console.log(
-                        chalk.red('Error, can not create the project folder.')
-                    );
-                }else{
-                    try{
-                        files.createProjectFiles(project_name, project_description, project_author);
-                    }catch(error){
-                        console.log(
-                            chalk.red('Error: ' + error)
-                        );
-                    }
-                }
-            }else{
-                console.log(
-                    chalk.red('Error, there is already a project or folder with that name in the current folder.')
-                );
-            }
-            break;
-        case 'add':
-            if(!argv._[1]){
-                return console.log(
-                    chalk.red(`Error, please specify type of object to add in the project.`)
-                );
-            }
-            if(argv._[1] == 'component'){
-                if(argv._[2]){
-                    component_name = argv._[2];
-                }else{
-                    const askName = await inquirer.askComponentName();
-                    component_name = askName.name;
-                }
-                if(files.directoryExists(`./package.json`) && files.verifyPackageJsonFile()){
-                    try{
-                        files.createComponentFiles(component_name);
-                    }catch(error){
-                        console.log(
-                            chalk.red('Error: ' + error)
-                        );
-                    }
-                }else{
-                    console.log(
-                        chalk.red('Error, the current project or folder does not have a valid package.json file.')
-                    );
-                }
-            }else{
-                console.log(
-                    chalk.red(`Error, there is no ${argv._[1]} option in the current build.`)
-                );
-            }
-            break;
-        default:
-          console.log(
-              chalk.red('Error!')
-          );
-          break;
-    } 
+const createProject = async() => {
+    let paramsObj = { projectName: '', projectAuthor: '', createBackend: false, createAuthenticationScript: false, createMultiLanguageSupport: false };
+    if(!argv.name){
+        let information = await inquirer.askProjectName();
+        if(!notAllowedCharacters.test(information.projectName)){ paramsObj.projectName = information.projectName; }
+        else{ logger.createProcessLog('Error', 'red', 'project name has not allowed characters.'); }
+    }else{
+        if(!notAllowedCharacters.test(argv.name)){ paramsObj.projectName = argv.name; }
+        else{ logger.createProcessLog('Error', 'red', 'project name has not allowed characters.'); }
+    }
+    paramsObj.projectName = helper.formatProjectName(paramsObj.projectName);
+    information = await inquirer.askProjectAuthor();
+    paramsObj.projectAuthor = information.projectAuthor;
+    let projectOptions = await inquirer.askProjectCreationOptions();
+    if(projectOptions.createBackend){ paramsObj.createBackend = projectOptions.createBackend; }
+    if(projectOptions.createAuthenticationScript){ paramsObj.createAuthenticationScript = projectOptions.createAuthenticationScript; }
+    if(projectOptions.createMultiLanguageSupport){ paramsObj.createMultiLanguageSupport = projectOptions.createMultiLanguageSupport; }
+    let createCommand = await create.createProject(paramsObj);
+    if(createCommand.error){ 
+        logger.createProcessLog('Error', 'red', createCommand.error);
+        return;
+    }
+    logger.createProcessLog('Success', 'green', 'project created successfully.');
+}
+
+switch(argv._[0]){
+    case 'create':
+        if(argv.type == 'project'){ createProject(); }
 }
 
 
-if(argv._[0] != null){
-    mainAsyncProc().then(() => {
-        process.exit();
-    });
-}
+
+
+
+
+
+
+
 
 
 

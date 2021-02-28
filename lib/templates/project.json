@@ -1,0 +1,27 @@
+{
+    "packageJson": [
+        "{",
+        "   \"name\": \"<--PROJECT_NAME-->\",",
+        "   \"version\": \"0.0.1\",",
+        "   \"description\": \"A brand new Simple Js project.\",",
+        "   \"main\": \"src/server.js\",",
+        "   \"scripts\": {",
+        "       \"start\": \"npm i\",",
+        "       \"test\": \"nodemon src/server.js\"",
+        "   },",
+        "   \"author\": \"<--AUTHOR_NAME-->\",",
+        "   \"license\": \"ISC\",",
+        "   \"dependencies\": {",
+        "       \"express\": \"^4.17.1\",",
+        "       \"cors\": \"^2.8.5\",",
+        "       \"dotenv\": \"^8.2.0\",",
+        "       \"helmet\": \"^4.4.1\",",
+        "       \"morgan\": \"^1.10.0\"",
+        "   },",
+        "   \"devDependencies\": {",
+        "       \"nodemon\": \"^2.0.7\"",
+        "   },",
+        "   \"customGen\": \"simplejs\"",
+        "}"
+    ]
+}
