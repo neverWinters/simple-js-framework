@@ -22,8 +22,8 @@ To start using the Simple Js environment:
 
 ```bash
 cd project-name
-npm run begin
 npm run start
+npm run test
 ```
 
 Next open the browser in http://localhost:4200 
