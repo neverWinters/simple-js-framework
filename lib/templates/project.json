@@ -23,5 +23,38 @@
         "   },",
         "   \"customGen\": \"simplejs\"",
         "}"
+    ],
+    "server": [
+        "const express = require('express');",
+        "const cors = require('cors');",
+        "const helmet = require('helmet');",
+        "const morgan = require('morgan');",
+        "const app = express();",
+        "const path = require('path');",
+        "",
+        "if(process.env.NODE_ENV !== 'production'){ require('dotenv').config(); }",
+        "else{",
+        "   app.use((req, res, next) => {",
+        "       if(!req.secure){ return res.redirect(`https://${req.headers.host + req.url}`); }",
+        "       else{ return next(); }",
+        "   });",
+        "}",
+        "app.use(helmet());",
+        "app.use(cors());",
+        "app.use(morgan('combined'));",
+        "app.use(express.json({ extended: true, inflate: true, limit: '100kb', parameterLimit: 1000, type: 'application/json', verify: undefined }));",
+        "app.use('/', express.static(path.resolve(__dirname, '../public')));",
+        "//<--INTERNATIONALIZATION_SCRIPT_DONT_ERASE-->",
+        "app.get('/', (req, res) => {",
+        "   res.sendFile('index.html', { root: path.resolve(__dirname, '../public') });",
+        "});",
+        "//<--NEW_COMPONENT_SCRIPT_DONT_ERASE-->",
+        "",
+        "//<--BACKEND_SCRIPT_DONT_ERASE-->",
+        "",
+        "app.listen(process.env.PORT);"
+    ],
+    "env": [
+        "PORT=4200"
     ]
 }
