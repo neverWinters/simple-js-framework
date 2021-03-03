@@ -45,7 +45,7 @@ Create a new component is very simple, just run the following command from the p
 simplejs create -t=component -n=component-name
 ```
 
-The component will be available on the route http://localhost:4200/component-name
+The component will be available on the route http://localhost:9898/component-name
 
 # Environment
 
