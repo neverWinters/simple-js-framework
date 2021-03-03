@@ -1,6 +1,11 @@
-# Simple Js Framework
-
-Simple Js is a framework designed to make web development more simple and fast. 
+<h1 align="center">
+    Simple Js Framework
+</h1>
+<p align="center">
+    Simple Js is a framework designed to make web development more simple and fast.
+    <br>
+    Make it simple, keep it that way.
+<p> 
 
 # Installation
 
