@@ -55,8 +55,13 @@ The environment structure is simple, just look at it:
     |   │   └── app.js           # Principal project js file
     │   └── index.html           # Principal index.html file   
     ├── src                      # Virtual server environment files
+    │   ├──conf                  # Server configuration files
+    |   │   ├── component.json   # Frontend component list
+    |   │   ├── route.json       # Backend route list
+    |   │   └── static.json      # Static file path list
     |   └── server.js            # Principal server side file
-    └── package.json
+    ├── .env                     # Environment variables file
+    └── package.json             # Project package file
 
 # License
 
