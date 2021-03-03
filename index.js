@@ -49,6 +49,9 @@ const createProject = async() => {
 switch(argv._[0]){
     case 'create':
         if(argv.type == 'project'){ createProject(); }
+        break;
+    default:
+        logger.createProcessLog('Error', 'red', 'please set a valid command.');
 }
 
 
