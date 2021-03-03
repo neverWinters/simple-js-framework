@@ -58,10 +58,6 @@ The environment structure is simple, just look at it:
     |   └── server.js            # Principal server side file
     └── package.json
 
-# Support
-
-You can support the development buying me a :coffee: [coffe](https://www.buymeacoffee.com/neverwinters). I would really appreciate that.
-
 # License
 
 This framework is under the ISC license.
