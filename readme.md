@@ -31,7 +31,7 @@ npm run start
 npm run test
 ```
 
-Next open the browser in http://localhost:4200 
+Next open the browser in http://localhost:9898 
 
 The Simple Js live server is powered by [Nodemon](https://www.npmjs.com/package/nodemon).
 
@@ -67,6 +67,11 @@ The environment structure is simple, just look at it:
     |   └── server.js            # Principal server side file
     ├── .env                     # Environment variables file
     └── package.json             # Project package file
+
+# Contributors
+
+    .
+    └── Johangel Ilarraza
 
 # License
 
