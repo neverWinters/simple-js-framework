@@ -1,6 +1,8 @@
 <h1 align="center">
     Simple Js Framework
 </h1>
+<br>
+<br>
 <p align="center">
     Simple Js is a framework designed to make web development more simple and fast.
     <br>
