@@ -24,6 +24,16 @@
         "   \"customGen\": \"simplejs\"",
         "}"
     ],
+    "res": {
+        "en": [
+            "{",
+            "}"
+        ],
+        "es": [
+            "{",
+            "}"
+        ]
+    },
     "src": {
         "conf": {
             "static": [
