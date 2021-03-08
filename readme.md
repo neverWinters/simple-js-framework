@@ -54,7 +54,7 @@ The environment structure is simple, just look at it:
 
     .
     ├── backend                         # Backend functions files
-    |   └── data                        # Data definition files
+    |   ├── data                        # Data definition files
     |   │   └── schema                  # Data schema validation files
     │   ├── helpers                     # Helper functions files
     │   └── routes                      # Backend routes files
@@ -64,8 +64,10 @@ The environment structure is simple, just look at it:
     |   │   └── app.css                 # Principal project css file
     │   ├── images                      # Image files
     │   ├── js                          # JS files
-    |   │   ├── auth.js                 # Authentication js file
-    |   │   └── app.js                  # Principal project js file
+    |   │   ├── app.js                  # Principal project js file
+    |   │   ├── authentication.js       # Authentication js file
+    |   │   ├── globals.js              # Component global variables file
+    |   │   └── pages.js                # Component pages declaration file
     │   └── index.html                  # Principal index.html file
     ├── res                             # Multilanguage support files
     │   ├── en.json                     # English texts file   
