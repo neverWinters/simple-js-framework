@@ -43,7 +43,7 @@ A component is another instance of javascript within the same project.
 Create a new component is very simple, just run the following command from the project root:
 
 ```bash
-simplejs create -t=component -n=componentName
+simplejs create -t=component -n=component-name
 ```
 
 The component will be available on the route http://localhost:9898/component-name
