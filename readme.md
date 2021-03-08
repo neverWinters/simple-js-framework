@@ -89,18 +89,18 @@ The Simple Js default frontend is powered by [Bootstrap 4.6.0](https://getbootst
 
 The Simple Js virtual server structure is powered by:
 
-[express])(https://www.npmjs.com/package/express)
-[cors](https://www.npmjs.com/package/cors)
-[dotenv](https://www.npmjs.com/package/dotenv)
-[helmet](https://www.npmjs.com/package/helmet)
+[express](https://www.npmjs.com/package/express),
+[cors](https://www.npmjs.com/package/cors),
+[dotenv](https://www.npmjs.com/package/dotenv),
+[helmet](https://www.npmjs.com/package/helmet),
 [morgan](https://www.npmjs.com/package/morgan)
 
 # Internal Backend Implementation
 
 The Simple Js default internal backend implementation is powered by:
 
-[joi](https://www.npmjs.com/package/joi)
-[jwt-simple](https://www.npmjs.com/package/jwt-simple)
+[joi](https://www.npmjs.com/package/joi),
+[jwt-simple](https://www.npmjs.com/package/jwt-simple),
 [moment](https://www.npmjs.com/package/moment)
 
 # Contributors
