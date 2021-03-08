@@ -28,8 +28,8 @@ To start using the Simple Js environment:
 
 ```bash
 cd project-name
-npm run start
-npm run test
+npm start
+npm test
 ```
 
 Next open the browser in http://localhost:9898 
@@ -43,7 +43,7 @@ A component is another instance of javascript within the same project.
 Create a new component is very simple, just run the following command from the project root:
 
 ```bash
-simplejs create -t=component -n=component-name
+simplejs create -t=component -n=componentName
 ```
 
 The component will be available on the route http://localhost:9898/component-name
@@ -70,7 +70,7 @@ The environment structure is simple, just look at it:
     |   │   └── pages.js                # Component pages declaration file
     │   └── index.html                  # Principal index.html file
     ├── res                             # Multilanguage support files
-    │   ├── en.json                     # English texts file   
+    │   ├── en.json                     # English texts file
     |   └── es.json                     # Spanish texts file
     ├── src                             # Virtual server environment files
     │   ├──conf                         # Server configuration files
@@ -80,6 +80,28 @@ The environment structure is simple, just look at it:
     |   └── server.js                   # Principal server side file
     ├── .env                            # Environment variables file
     └── package.json                    # Project package file
+
+# Frontend
+
+The Simple Js default frontend is powered by [Bootstrap 4.6.0](https://getbootstrap.com/docs/4.6/getting-started/introduction/).
+
+# Virtual Server
+
+The Simple Js virtual server structure is powered by:
+
+[express])(https://www.npmjs.com/package/express)
+[cors](https://www.npmjs.com/package/cors)
+[dotenv](https://www.npmjs.com/package/dotenv)
+[helmet](https://www.npmjs.com/package/helmet)
+[morgan](https://www.npmjs.com/package/morgan)
+
+# Internal Backend Implementation
+
+The Simple Js default internal backend implementation is powered by:
+
+[joi](https://www.npmjs.com/package/joi)
+[jwt-simple](https://www.npmjs.com/package/jwt-simple)
+[moment](https://www.npmjs.com/package/moment)
 
 # Contributors
 
