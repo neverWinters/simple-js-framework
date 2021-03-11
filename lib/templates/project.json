@@ -21,7 +21,11 @@
         "   \"devDependencies\": {",
         "       \"nodemon\": \"^2.0.7\"",
         "   },",
-        "   \"customGen\": \"simplejs\"",
+        "   \"customGen\": {",
+        "       \"name\": \"simplejs\",",
+        "       \"multiLanguageSupport\": <--MULTI_LANGUAGE_SUPPORT-->,",
+        "       \"integratedBackend\": <--INTEGRATED_BACKEND-->",
+        "   }",
         "}"
     ],
     "res": {

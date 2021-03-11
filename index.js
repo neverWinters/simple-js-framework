@@ -23,8 +23,9 @@ logger.createVisualLog('blueBright', 'SimpleJs');
 
 const createProject = async() => {
     let paramsObj = { projectName: '', projectAuthor: '', createBackend: false, createMultiLanguageSupport: false };
+    let information;
     if(!argv.name){
-        let information = await inquirer.askProjectName();
+        information = await inquirer.askProjectName();
         if(!notAllowedCharacters.test(information.projectName)){ paramsObj.projectName = information.projectName; }
         else{ logger.createProcessLog('Error', 'red', 'project name has not allowed characters.'); }
     }else{
@@ -45,9 +46,32 @@ const createProject = async() => {
     logger.createProcessLog('Success', 'green', 'project created successfully.');
 }
 
+const createComponent = async() => {
+    let paramsObj = { componentName: '', authenticationType: '' };
+    let information;
+    if(!argv.name){
+        information = await inquirer.askComponentName();
+        if(!notAllowedCharacters.test(information.componentName)){ paramsObj.componentName = information.componentName; }
+        else{ logger.createProcessLog('Error', 'red', 'component name has not allowed characters.'); }
+    }else{
+        if(!notAllowedCharacters.test(argv.name)){ paramsObj.componentName = argv.name; }
+        else{ logger.createProcessLog('Error', 'red', 'component name has not allowed characters.'); }
+    }
+    paramsObj.componentName = helper.formatComponentName(paramsObj.componentName);
+    let componentOptions = await inquirer.askComponentAuthenticationType();
+    paramsObj.authenticationType = componentOptions.authenticationType;
+    let createCommand = await create.createComponent(paramsObj);
+    if(createCommand.error){ 
+        logger.createProcessLog('Error', 'red', createCommand.error);
+        return;
+    }
+    logger.createProcessLog('Success', 'green', 'component created successfully.');
+}
+
 switch(argv._[0]){
     case 'create':
         if(argv.type == 'project'){ createProject(); }
+        if(argv.type == 'component'){ createComponent(); }
         break;
     default:
         logger.createProcessLog('Error', 'red', 'please set a valid command.');
