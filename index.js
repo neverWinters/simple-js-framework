@@ -22,7 +22,7 @@ clear();
 logger.createVisualLog('blueBright', 'SimpleJs');
 
 const createProject = async() => {
-    let paramsObj = { projectName: '', projectAuthor: '', createBackend: false, createMultiLanguageSupport: false };
+    let paramsObj = { projectName: '', projectAuthor: '', createMultiLanguageSupport: false };
     let information;
     if(!argv.name){
         information = await inquirer.askProjectName();
@@ -36,7 +36,6 @@ const createProject = async() => {
     information = await inquirer.askProjectAuthor();
     paramsObj.projectAuthor = information.projectAuthor;
     let projectOptions = await inquirer.askProjectCreationOptions();
-    if(projectOptions.createBackend){ paramsObj.createBackend = projectOptions.createBackend; }
     if(projectOptions.createMultiLanguageSupport){ paramsObj.createMultiLanguageSupport = projectOptions.createMultiLanguageSupport; }
     let createCommand = await create.createProject(paramsObj);
     if(createCommand.error){ 

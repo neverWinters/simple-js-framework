@@ -23,8 +23,7 @@
         "   },",
         "   \"customGen\": {",
         "       \"name\": \"simplejs\",",
-        "       \"multiLanguageSupport\": <--MULTI_LANGUAGE_SUPPORT-->,",
-        "       \"integratedBackend\": <--INTEGRATED_BACKEND-->",
+        "       \"multiLanguageSupport\": <--MULTI_LANGUAGE_SUPPORT-->",
         "   }",
         "}"
     ],
@@ -548,17 +547,12 @@
                     ]
                 }
             ],
-            "backendVariants": [
-                {
-                    "integratedBackend": false,
-                    "authentication": [
-                        "if(!localStorage.getItem('authorizationData')){",
-                        "   pageNoAuth();",
-                        "}else{",
-                        "   pageAuth();",
-                        "}"
-                    ]
-                }
+            "authentication": [
+                "if(!localStorage.getItem('authorizationData')){",
+                "   pageNoAuth();",
+                "}else{",
+                "   pageAuth();",
+                "}"
             ]
         } 
             
@@ -583,10 +577,6 @@
                 "       \"fileName\": \"index.html\"",
                 "   }",
                 "]"
-            ],
-            "route": [
-                "[",
-                "]"
             ]
         },
         "server": [
@@ -598,8 +588,6 @@
             "const path = require('path');",
             "const confStatic = require('./conf/static.json');",
             "const confComponent = require('./conf/component.json');",
-            "const confRoute = require('./conf/route.json');",
-            "const routesArray = [];",
             "",
             "if(process.env.NODE_ENV !== 'production'){ require('dotenv').config(); }",
             "else{",

@@ -95,14 +95,6 @@ The Simple Js virtual server structure is powered by:
 [helmet](https://www.npmjs.com/package/helmet),
 [morgan](https://www.npmjs.com/package/morgan)
 
-# Internal Backend Implementation
-
-The Simple Js default internal backend implementation is powered by:
-
-[joi](https://www.npmjs.com/package/joi),
-[jwt-simple](https://www.npmjs.com/package/jwt-simple),
-[moment](https://www.npmjs.com/package/moment)
-
 # Contributors
 
     .
