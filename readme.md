@@ -53,12 +53,6 @@ The component will be available on the route http://localhost:9898/component-nam
 The environment structure is simple, just look at it:
 
     .
-    ├── backend                         # Backend functions files
-    |   ├── data                        # Data definition files
-    |   │   └── schema                  # Data schema validation files
-    │   ├── helpers                     # Helper functions files
-    │   └── routes                      # Backend routes files
-    |       └── v1                      # Backend versioned routes files
     ├── public                          # Public page files
     |   ├── css                         # CSS files
     |   │   └── app.css                 # Principal project css file
