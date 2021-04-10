@@ -8,15 +8,24 @@ const notAllowedCharacters = /[ `!@#$%^&*()_+\=\[\]{};':"\\|,.<>\/?~]/;
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 const argv = yargs(hideBin(process.argv)).usage('Usage: simplejs <command> [options]')
-    .command('create', 'Create a simpleJs Project')
-    .example('simplejs create -t <type> -n <name>', 'Create command for SimpleJs project.')
-    .alias('n', 'name')
-    .describe('n', 'Name')
-    .alias('t', 'type')
-    .describe('t', 'Type')
-    .choices('t', ['project', 'component'])
-    .demandOption(['t'])
-    .argv;
+    .command('create', 'Create a Simple Js structure', (yargs) => {
+        yargs
+            .example(
+                'simplejs create -t project -n test-project', 
+                'simplejs create -t component -n test-component'
+            )
+            .positional('t', {
+                describe: 'Type of Simple Js structure to create',
+                alias: 'type',
+                choices: ['project', 'component']
+            })
+            .positional('n', {
+                describe: 'Simple Js structure name',
+                alias: 'name',
+                type: 'string'
+            })
+            .demandOption(['t'])
+    }).argv;
 
 clear();
 logger.createVisualLog('blueBright', 'SimpleJs');
